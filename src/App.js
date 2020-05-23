@@ -17,11 +17,16 @@ const Page = styled.div`
 function createInitalState(numberOfCards) {
   const cards = [];
 
+  const NUMBER_PER_MATCH = 2;
+
   // Add pairs of cards to the state
-  for (let i = 0; i < numberOfCards; i += 2) {
-    const defaults = { id: i, flipped: false, matched: false };
-    cards.push({ ...defaults });
-    cards.push({ ...defaults });
+  for (let i = 0; i < numberOfCards; i++) {
+    cards.push({
+      id: i,
+      type: i % (numberOfCards / NUMBER_PER_MATCH),
+      flipped: false,
+      matched: false,
+    });
   }
 
   return {
@@ -31,8 +36,16 @@ function createInitalState(numberOfCards) {
 
 function reducer(state, action) {
   switch (action.type) {
-    case "reset":
+    case "RESET":
       return createInitalState(action.numberOfCards);
+    case "FLIP_CARD":
+      console.log(action);
+      return {
+        ...state,
+        cards: state.cards.map((card) =>
+          card.id !== action.id ? { ...card } : { ...card, flipped: true }
+        ),
+      };
     default:
       return state;
   }
@@ -46,7 +59,13 @@ function App() {
     createInitalState
   );
 
-  const cards = state.cards.map((card) => <Card flipped={card.flipped} />);
+  const cards = state.cards.map((card) => (
+    <Card
+      flipped={card.flipped}
+      type={card.type}
+      onClick={() => dispatch({ type: "FLIP_CARD", id: card.id })}
+    />
+  ));
 
   return (
     <Page>

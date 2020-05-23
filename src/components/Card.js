@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import CardImage from "../cards/undraw_secure_login_pdn4.svg";
 
 const Card = styled.div`
   margin: 20px;
   width: 100px;
   height: 100px;
-  background-image: url(${(props) => (props.flipped ? CardImage : null)});
+  background-image: url(${(props) => {
+    const imgUrl = `${process.env.PUBLIC_URL}/cards/${props.type}.svg`;
+    return props.flipped ? imgUrl : null;
+  }});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
