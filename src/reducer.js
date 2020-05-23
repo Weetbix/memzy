@@ -1,13 +1,30 @@
 import shuffle from "lodash/shuffle";
 
+// The number of images in the project, we dont want to go over
+// this maximum amount...
+const NUM_AVAILABLE_IMAGES = 20;
+
 // Creates the initial game state.
 // @param {number} numberOfCards    The total desired number of cards on the board
 // @param {number} cardsPerSet      The number of cards that must be matched together
 //                                  ie. pairs, triples etc
 export function createInitalState({ numberOfCards, cardsPerSet }) {
-  const cards = [];
+  if (numberOfCards < 2) {
+    throw new Error("number of card should be at least 2");
+  }
+  if (numberOfCards / cardsPerSet > NUM_AVAILABLE_IMAGES) {
+    throw new Error(
+      "Not enough images in the project to suppor that many different types of cards!"
+    );
+  }
+  if (numberOfCards % cardsPerSet !== 0) {
+    throw new Error(
+      "The number of cards in the set should be evenly divisible into the total amount of cards"
+    );
+  }
 
   // Add pairs of cards to the state
+  const cards = [];
   for (let i = 0; i < numberOfCards; i++) {
     cards.push({
       id: i,
