@@ -1,17 +1,17 @@
 import shuffle from "lodash/shuffle";
 
-// How many cards we need to match together, ie
-// pairs, tripples, etc
-const NUMBER_PER_MATCH = 2;
-
-export function createInitalState(numberOfCards) {
+// Creates the initial game state.
+// @param {number} numberOfCards    The total desired number of cards on the board
+// @param {number} cardsPerSet      The number of cards that must be matched together
+//                                  ie. pairs, triples etc
+export function createInitalState({ numberOfCards, cardsPerSet }) {
   const cards = [];
 
   // Add pairs of cards to the state
   for (let i = 0; i < numberOfCards; i++) {
     cards.push({
       id: i,
-      type: i % (numberOfCards / NUMBER_PER_MATCH),
+      type: i % (numberOfCards / cardsPerSet),
       // When a card is 'flipped' it's part of the current play selection
       flipped: false,
       // When a card is matched, its full set has been found and its out of play
@@ -30,7 +30,10 @@ export function createInitalState(numberOfCards) {
 export function reducer(state, action) {
   switch (action.type) {
     case "RESET":
-      return createInitalState(action.numberOfCards);
+      return createInitalState({
+        numberOfCards: action.numberOfCards,
+        cardsPerSet: action.cardsPerSet,
+      });
 
     // Flips one card if the game state is interactive and disables interactive
     case "FLIP_CARD":
@@ -50,6 +53,9 @@ export function reducer(state, action) {
       const cardsDontMatch = !flippedCards.every(
         (card, i, cards) => card.type === cards[0].type
       );
+      const allCardsInSetFlipped = state.cards
+        .filter((card) => card.type === flippedCards[0].type)
+        .every((card) => card.flipped);
 
       if (cardsDontMatch) {
         // if any of the flipped cards do not have matching types, unflip all cards
@@ -57,8 +63,8 @@ export function reducer(state, action) {
           ...newState,
           cards: state.cards.map((card) => ({ ...card, flipped: false })),
         };
-      } else if (flippedCards.length === NUMBER_PER_MATCH) {
-        // otherise, if we are the last card in the set, mark all as matched
+      } else if (allCardsInSetFlipped) {
+        // otherise, if all cards in the set are flipped, mark all as matched
         return {
           ...newState,
           cards: state.cards.map((card) =>

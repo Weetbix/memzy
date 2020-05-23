@@ -5,8 +5,10 @@ import Grid from "./components/Grid";
 import WinnerScreen from "./components/WinnerScreen";
 import { reducer, createInitalState } from "./reducer";
 
-const GRID_WIDTH = 2;
-const GRID_HEIGHT = 2;
+const GRID_WIDTH = 5;
+const GRID_HEIGHT = 4;
+const CARDS_PER_SET = 2;
+// How long to disable interaction for after clicking, in milliseconds
 const TIMEMOUT_AFTER_CARD_FLIP = 500;
 
 const Page = styled.div`
@@ -21,7 +23,7 @@ function App() {
   const numberOfCards = GRID_WIDTH * GRID_HEIGHT;
   const [state, dispatch] = useReducer(
     reducer,
-    numberOfCards,
+    { numberOfCards, cardsPerSet: CARDS_PER_SET },
     createInitalState
   );
 
@@ -51,7 +53,11 @@ function App() {
       {gameOver && (
         <WinnerScreen
           onClick={() => {
-            dispatch({ type: "RESET", numberOfCards });
+            dispatch({
+              type: "RESET",
+              numberOfCards,
+              cardsPerSet: CARDS_PER_SET,
+            });
           }}
         />
       )}
