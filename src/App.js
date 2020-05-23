@@ -6,6 +6,7 @@ import { reducer, createInitalState } from "./reducer";
 
 const GRID_WIDTH = 5;
 const GRID_HEIGHT = 4;
+const TIMEMOUT_AFTER_CARD_FLIP = 2000;
 
 const Page = styled.div`
   height: 100vh;
@@ -26,7 +27,13 @@ function App() {
     <Card
       flipped={card.flipped || card.matched}
       type={card.type}
-      onClick={() => dispatch({ type: "FLIP_CARD", id: card.id })}
+      onClick={async () => {
+        dispatch({ type: "FLIP_CARD", id: card.id });
+        await new Promise((resolve) =>
+          setTimeout(resolve, TIMEMOUT_AFTER_CARD_FLIP)
+        );
+        dispatch({ type: "CHECK_BOARD" });
+      }}
     />
   ));
 
