@@ -6,7 +6,7 @@ import { reducer, createInitalState } from "./reducer";
 
 const GRID_WIDTH = 5;
 const GRID_HEIGHT = 4;
-const TIMEMOUT_AFTER_CARD_FLIP = 2000;
+const TIMEMOUT_AFTER_CARD_FLIP = 500;
 
 const Page = styled.div`
   height: 100vh;
@@ -34,6 +34,7 @@ function App() {
         );
         dispatch({ type: "CHECK_BOARD" });
       }}
+      disabled={!state.interactive}
     />
   ));
 

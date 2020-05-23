@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Card = styled.div`
+const Card = styled.button`
   margin: 20px;
   width: 100px;
   height: 100px;
@@ -13,6 +13,10 @@ const Card = styled.div`
   background-position: center;
   box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+
+  :focus {
+    outline: 0;
+  }
 `;
 
 export default Card;
