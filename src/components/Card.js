@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import PropTypes from "prop-types";
 
 const flipAnimation = keyframes`
   0% {
@@ -52,5 +53,10 @@ const Card = styled.button`
     outline: 0;
   }
 `;
+
+Card.propTypes = {
+  type: PropTypes.number.isRequired,
+  flipped: PropTypes.bool.isRequired,
+};
 
 export default Card;
