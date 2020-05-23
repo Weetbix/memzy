@@ -5,7 +5,7 @@ const Card = styled.div`
   margin: 20px;
   width: 100px;
   height: 100px;
-  background-image: url(${CardImage});
+  background-image: url(${(props) => (props.flipped ? CardImage : null)});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
