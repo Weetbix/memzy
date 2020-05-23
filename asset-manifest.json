@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/memzy/static/js/main.52c0223f.chunk.js",
-    "main.js.map": "/memzy/static/js/main.52c0223f.chunk.js.map",
+    "main.js": "/memzy/static/js/main.90f38687.chunk.js",
+    "main.js.map": "/memzy/static/js/main.90f38687.chunk.js.map",
     "runtime-main.js": "/memzy/static/js/runtime-main.51cab80a.js",
     "runtime-main.js.map": "/memzy/static/js/runtime-main.51cab80a.js.map",
     "static/js/2.8f05b09d.chunk.js": "/memzy/static/js/2.8f05b09d.chunk.js",
     "static/js/2.8f05b09d.chunk.js.map": "/memzy/static/js/2.8f05b09d.chunk.js.map",
     "index.html": "/memzy/index.html",
-    "precache-manifest.38fc05eabde0b27fd7df1231f7d307ba.js": "/memzy/precache-manifest.38fc05eabde0b27fd7df1231f7d307ba.js",
+    "precache-manifest.210726f41db8df00a7cb19f2f719dcb5.js": "/memzy/precache-manifest.210726f41db8df00a7cb19f2f719dcb5.js",
     "service-worker.js": "/memzy/service-worker.js",
     "static/js/2.8f05b09d.chunk.js.LICENSE.txt": "/memzy/static/js/2.8f05b09d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.51cab80a.js",
     "static/js/2.8f05b09d.chunk.js",
-    "static/js/main.52c0223f.chunk.js"
+    "static/js/main.90f38687.chunk.js"
   ]
 }

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5f0ccbe69dbf94110c1e4ade0efbab2d",
+    "revision": "68231903d003b1b6180d419d8704bdef",
     "url": "/memzy/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/memzy/static/js/2.8f05b09d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d65331315928fb64abb8",
-    "url": "/memzy/static/js/main.52c0223f.chunk.js"
+    "revision": "4aea1e2ead450ac4b619",
+    "url": "/memzy/static/js/main.90f38687.chunk.js"
   },
   {
     "revision": "290b2853546d12bcde27",
