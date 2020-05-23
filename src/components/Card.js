@@ -52,6 +52,9 @@ const Card = styled.button`
   :focus {
     outline: 0;
   }
+  :hover {
+    transform: scale(1.05);
+  }
 `;
 
 Card.propTypes = {
