@@ -34,7 +34,9 @@ const Card = styled.button`
   height: 100px;
   border-radius: 100px;
   border-color: rgba(0, 0, 0, 0.1);
+  border-width: 1px;
 
+  background-color: white;
   background-image: url(${(props) => {
     const imgUrl = `${process.env.PUBLIC_URL}/cards/${props.type}.svg`;
     return props.flipped ? imgUrl : null;

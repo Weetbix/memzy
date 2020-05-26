@@ -52,7 +52,7 @@ export function reducer(state, action) {
         cardsPerSet: action.cardsPerSet,
       });
 
-    // Flips one card if the game state is interactive and disables interactive
+    // Flips one card and disables the interactive state
     case "FLIP_CARD":
       return {
         ...state,
